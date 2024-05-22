@@ -1,0 +1,80 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+a {
+  color: #113f67;
+}
+.weather-app {
+  border-radius: 10px;
+  background: #f2f2f2;
+  width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+}
+header {
+  padding-bottom: 40px;
+}
+#search-input {
+  border: none;
+  padding: 20px 30px;
+  border-radius: 5px;
+  background: #e7eaf6;
+  width: 80%;
+  font-size: 15px;
+}
+#search-button {
+  border: none;
+  border-radius: 5px;
+  padding: 20px 25px;
+  background: #38598b;
+  color: white;
+  margin-left: 4px;
+  font-size: 15px;
+}
+h1 {
+  font-size: 34px;
+  font-weight: 900;
+  margin: 0;
+  color: #231c39;
+}
+#temperature-details {
+  display: flex;
+  justify-content: start;
+}
+#icon {
+  position: relative;
+  bottom: 5px;
+}
+#temperature {
+  font-size: 80px;
+  font-weight: bold;
+  margin-top: 0;
+  color: #231c39;
+}
+#unit {
+  color: #231c39;
+  font-weight: bold;
+  font-size: 26px;
+}
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+}
+.current-details p {
+  font-size: 16px;
+  opacity: 0.8;
+}
+.precipitation {
+  font-size: 20px;
+  margin-right: 25px;
+  opacity: 0.8;
+}
+strong {
+  color: #113f67;
+}
+footer {
+  padding-top: 20px;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 14px;
+}
