@@ -24,6 +24,20 @@ function searchCity(city) {
 
   axios.get(apiUrl).then(showWeatherDetails);
 }
+function weatherForecast() {
+  let forecast = document.querySelector("#weather-forecast");
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecast.innerHTML += `
+  <div id="forecast">
+  <div class="forecast-date">${day}</div>
+    <div class="forecast-icon">🌤</div>
+  <div class="forecast-temperatures"><span class="max-temperature"><strong>18° </strong></span
+  <span class="min-temperature"><strong> 8°</strong></span>
+  </div>
+  </div>`;
+  });
+}
 
 function search(event) {
   event.preventDefault();
@@ -65,3 +79,4 @@ let currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
 
 searchCity("Nairobi");
+weatherForecast();

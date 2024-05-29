@@ -41,10 +41,6 @@ h1 {
   display: flex;
   justify-content: start;
 }
-#icon {
-  position: relative;
-  bottom: 5px;
-}
 #temperature {
   font-size: 80px;
   font-weight: bold;
@@ -68,6 +64,11 @@ h1 {
   font-size: 20px;
   margin-right: 25px;
   opacity: 0.8;
+}
+#weather-forecast {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 strong {
   color: #113f67;
