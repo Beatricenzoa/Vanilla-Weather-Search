@@ -17,6 +17,7 @@ function showWeatherDetails(response) {
 
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.city;
+  showForecast(response.data.city);
 }
 function searchCity(city) {
   let key = "0f8t20affd39ebb0d8d3f0o83cf0b40f";
@@ -24,19 +25,42 @@ function searchCity(city) {
 
   axios.get(apiUrl).then(showWeatherDetails);
 }
-function weatherForecast() {
-  let forecast = document.querySelector("#weather-forecast");
+function showForecast(city) {
+  let key = "0f8t20affd39ebb0d8d3f0o83cf0b40f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${key}&units=metric`;
+
+  axios.get(apiUrl).then(weatherForecast);
+}
+
+function formatedDay(timestamp) {
+  let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecast.innerHTML += `
-  <div id="forecast">
-  <div class="forecast-date">${day}</div>
-    <div class="forecast-icon">🌤</div>
-  <div class="forecast-temperatures"><span class="max-temperature"><strong>18° </strong></span
-  <span class="min-temperature"><strong> 8°</strong></span>
-  </div>
+  return days[date.getDay()];
+}
+
+function weatherForecast(response) {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecast = "";
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecast =
+        forecast +
+        `
+      <div class="weather-forecast">
+  <div class="forecast-date">${formatedDay(day.time)}</div>
+    <div class="forecast-icon"><img src="${day.condition.icon_url}">
+    </div>
+  <div class="forecast-temperatures"><span class="max-temperature"><strong>${Math.round(
+    day.temperature.maximum
+  )}° </strong></span>
+  <span class="min-temperature"><strong> ${Math.round(
+    day.temperature.minimum
+  )}°</strong></span>
+  </div> 
   </div>`;
+    }
   });
+  forecastElement.innerHTML = forecast;
 }
 
 function search(event) {
@@ -79,4 +103,3 @@ let currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
 
 searchCity("Nairobi");
-weatherForecast();
